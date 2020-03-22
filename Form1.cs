@@ -36,6 +36,21 @@ namespace DotNetMemoryUtilization
       Debug.WriteLine($@"TotalSeconds: {watch.Elapsed.TotalSeconds}");
     }
 
+    private void button2_Click(object sender, EventArgs e)
+    {
+      var watch = new System.Diagnostics.Stopwatch();
+
+      watch.Start();
+
+      Parallel.For(0, 100000, i =>
+      {
+        ExportForm(i);
+      });
+
+      watch.Stop();
+      Debug.WriteLine($@"TotalSeconds: {watch.Elapsed.TotalSeconds}");
+    }
+
     private void ExportForm(int id)
     {
       using (Form form = new Form())
@@ -49,7 +64,7 @@ namespace DotNetMemoryUtilization
         }
 
         //Export using the Third Party Export Component
-      
+
         ForceGarbageCollect();
         TextBoxContent = string.Empty;
       }
