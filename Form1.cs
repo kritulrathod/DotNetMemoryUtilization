@@ -30,8 +30,6 @@ namespace DotNetMemoryUtilization
       for (int i = 0; i <= 100000; i++)
       {
         ExportForm(i);
-
-        ForceGarbageCollect();
       }
 
       watch.Stop();
@@ -51,6 +49,9 @@ namespace DotNetMemoryUtilization
         }
 
         //Export using the Third Party Export Component
+      
+        ForceGarbageCollect();
+        TextBoxContent = string.Empty;
       }
     }
 
