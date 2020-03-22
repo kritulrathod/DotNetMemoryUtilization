@@ -38,14 +38,18 @@ namespace DotNetMemoryUtilization
 
     private void ExportForm(int id)
     {
-      Form form = new Form();
-      //Fetch record by id and populate the form object
+      using (Form form = new Form())
+      {
+        //Fetch record by id and populate the form object
 
-      TextBoxContent += new String('*', id);
-      RichTextBox textbox = new RichTextBox() { Text = TextBoxContent };
-      form.Controls.Add(textbox);
+        TextBoxContent += new String('*', id);
+        using (RichTextBox textbox = new RichTextBox() { Text = TextBoxContent })
+        {
+          form.Controls.Add(textbox);
+        }
 
-      //Export using the Third Party Export Component
+        //Export using the Third Party Export Component
+      }
     }
 
     private static void ForceGarbageCollect()
