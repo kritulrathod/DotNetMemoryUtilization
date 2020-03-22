@@ -20,17 +20,7 @@ namespace DotNetMemoryUtilization
     public static void LogMemoryFootPrint(int arg)
     {
       sb = new StringBuilder();
-
       currentProcess = System.Diagnostics.Process.GetCurrentProcess();
-
-      //x86
-      //sb.Append($@",NonpagedSystemMemorySize {currentProcess.NonpagedSystemMemorySize}");
-      //sb.Append($@",PagedMemorySize {currentProcess.PagedMemorySize}");
-      //sb.Append($@",PagedSystemMemorySize {currentProcess.PagedSystemMemorySize}");
-      //sb.Append($@",PeakPagedMemorySize {currentProcess.PeakPagedMemorySize}");
-      //sb.Append($@",PeakVirtualMemorySize {currentProcess.PeakVirtualMemorySize}");
-      //sb.Append($@",PrivateMemorySize {currentProcess.PrivateMemorySize}");
-      //sb.Append($@",VirtualMemorySize {currentProcess.VirtualMemorySize}");
 
       //x64
       sb.Append($@"{arg.ToString("00000")}");
@@ -39,10 +29,8 @@ namespace DotNetMemoryUtilization
       sb.Append($@"{'\t'}{currentProcess.PrivateMemorySize64}");
       sb.Append($@"{'\t'}{currentProcess.VirtualMemorySize64}");
 
-
       Debug.WriteLine(sb.ToString());
       sb = null;
     }
-
   }
 }
