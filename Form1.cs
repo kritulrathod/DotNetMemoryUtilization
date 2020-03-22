@@ -30,6 +30,8 @@ namespace DotNetMemoryUtilization
       for (int i = 0; i <= 100000; i++)
       {
         ExportForm(i);
+
+        ForceGarbageCollect();
       }
 
       watch.Stop();
